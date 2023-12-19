@@ -25,5 +25,5 @@ if __name__ == "__main__":
         count = coll.count_documents({'method': method})
         print("\tmethod {}: {}".format(method, count))
 
-    status_get = coll.count_documents({'method': 'GET', 'PATH': "/status"})
+    status_get = coll.count_documents({'method': 'GET', 'path': "/status"})
     print("{} status check".format(status_get))
