@@ -1,2 +1,2 @@
 // lists all docs with name starting by Holberton in the collection school
-db.school.find({name: /Holberton.*/}.forEach(printjson);
+db.school.find({name: {$regex: "^Holberton"} })
