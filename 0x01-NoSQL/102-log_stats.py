@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 from pymongo import MongoClient
 """
-Improve 12-log_stats.py by adding the top 10 of the most present IPs in 
+Improve 12-log_stats.py by adding the top 10 of the most present IPs in
 the collection nginx of the database logs:
-"""
+    """
 
 
 if __name__ == "__main__":
@@ -19,14 +19,14 @@ if __name__ == "__main__":
     status_get = coll.count_documents({'method': 'GET', 'path': "/status"})
     print("{} status check".format(status_get))
 
-    print("IPS:")
+    print("IPs:")
     ips = coll.aggregate([
         {"$group":
             {
                 "_id": "$ip",
                 "count": {"$sum": 1}
             }
-        },
+         },
         {"$sort": {"count": -1}},
         {"$limit": 10},
         {"$project": {
