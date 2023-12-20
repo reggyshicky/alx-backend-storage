@@ -1,23 +1,20 @@
 #!/usr/bin/env python3
-"""
-Expiring web cache module
-"""
+""" expiring web cache module """
 
 import redis
 import requests
 from typing import Callable
-from functools improt wraps
+from functools import wraps
 
 redis = redis.Redis()
 
 
-def wrrap_requests(fn: Callable) -> Callable:
-    """Decorator wrapper"""
-    
-    
+def wrap_requests(fn: Callable) -> Callable:
+    """ Decorator wrapper """
+
     @wraps(fn)
     def wrapper(url):
-        """wrapper or decorator guy"""
+        """ Wrapper for decorator guy """
         redis.incr(f"count:{url}")
         cached_response = redis.get(f"cached:{url}")
         if cached_response:
@@ -31,8 +28,7 @@ def wrrap_requests(fn: Callable) -> Callable:
 
 @wrap_requests
 def get_page(url: str) -> str:
-    """
-    get page self descriptie
+    """get page self descriptive
     """
     response = requests.get(url)
     return response.text
