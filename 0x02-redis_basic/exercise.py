@@ -18,7 +18,7 @@ def count_calls(method: callable) -> callable:
     a system to count how many times mwthods of the Cache class are called
     """
     key = method.__qualname__
-    
+
     @wraps(method)
     def wrapper(self, *args, **kwargs):
         """wrap"""
