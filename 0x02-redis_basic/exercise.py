@@ -26,6 +26,7 @@ def count_calls(method: Callable) -> Callable:
         return method(self, *args, **kwargs)
     return wrapper
 
+
 def call_history(method: Callable) -> Callable:
     """
     add its input parameters one list
@@ -46,6 +47,7 @@ def call_history(method: Callable) -> Callable:
         self._redis.rpush(outputs, str(data))
         return data
     return wrapper
+
 
 def replay(method: Callable) -> None:
     """
